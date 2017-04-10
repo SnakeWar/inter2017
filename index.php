@@ -48,10 +48,10 @@ include('templates/header.php'); ?>
     </a>
 </div>
 
-
+<h1>Escação dos Times</h1>
 
 <div class="row times">
-    <h1>Escação dos Times</h1>
+
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
@@ -111,11 +111,17 @@ include('templates/header.php'); ?>
     </div>
 </div>
 
+<div class="row titulo">
+    <div class="col-md-6">
+        <h1>Top-Score</h1>
+    </div>
+    <div class="col-md-6">
+        <h1>Jogos</h1>
+    </div>
+</div>
 <div class="container-fluid top-score">
     <div class="row">
-
         <div class="col-md-6">
-            <h1>Top-Score</h1>
             <ul class="list-group">
                 <li class="list-group-item">
                     <span class="badge">20</span>
@@ -156,7 +162,6 @@ include('templates/header.php'); ?>
             </ul>
         </div>
         <div class="col-md-6">
-            <h1>Jogos</h1>
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
