@@ -1,0 +1,61 @@
+/* HEADER */
+.gran-menu{
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+@media screen and (max-width: 480px){
+    .gran-menu {
+        display: none;
+    }
+}
+@media screen and (min-width: 479px){
+    .min-menu{
+        display: none;
+    }
+}
+.menu-icon{
+    font-size: 25px !important;
+}
+.dropdown-menu-large{
+    width: 100% !important;
+}
+/*FIM*/
+/* ---------------------------- */
+/* TIMES */
+
+.times{
+    margin: 15px 15px;
+    /*background-color: #3c763d;*/
+}
+
+/* FIM */
+/* ---------------------------- */
+/* TOP-SCORE */
+
+.top-score{
+    margin: 0 15px;
+    /*background-color: #2b542c;*/
+}
+
+/* FIM */
+/* ---------------------------- */
+/*  FOOTER */
+
+.centro{
+    text-align: center;
+}
+.footer{
+
+}
+
+/*  FIM */
+/* ---------------------------- */
+/* GERAL */
+
+h1{
+    text-align: center;
+    /*color: white;*/
+}
+
+/* FIM */
