@@ -5,8 +5,16 @@
  * Date: 08/04/2017
  * Time: 08:08
  */
+<<<<<<< HEAD
 include('templates/header.php'); 
 include('templates/banco.php');
+=======
+include('templates/header.php');
+include('templates/banco.php');
+
+
+
+>>>>>>> 5504b6ea8bad3dd14ee9578b60ec91ac7cf605c7
 ?>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -57,6 +65,7 @@ include('templates/banco.php');
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
+<<<<<<< HEAD
                 <?php 
 
                     $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 1");
@@ -79,6 +88,22 @@ include('templates/banco.php');
                 }
             }
         ?>
+=======
+                Time A
+            </a>
+            <?php
+
+            $query = mysqli_query($link, "SELECT `time`.`nome`, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
+            $jogador =  mysqli_num_rows($result);
+            $result = mysqli_fetch_array($query);
+            var_dump($result);
+            echo $jogador;
+
+
+            mysqli_close($link);
+
+            ?>
+>>>>>>> 5504b6ea8bad3dd14ee9578b60ec91ac7cf605c7
 
         </div>
     </div>
