@@ -60,27 +60,19 @@ include('templates/banco.php');
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
-
-                <?php
-
-                $query = mysqli_query($link, "SELECT `jogador`.`nome`, `time`.`nome`
-FROM `time`
-    LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`
-WHERE (`time`.`nome` Time A)
-");
-
-
-                ?>
                 Time A
             </a>
-
-            <?php while ($jogador = mysqli_fetch_assoc($result)) { ?>
-
-            <a href="#" class="list-group-item"><?php echo $jogador['jogador.nome'] ?></a>
-
             <?php
-            }
+
+            $query = mysqli_query($link, "SELECT `time`.`nome`, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
+            $jogador =  mysqli_num_rows($result);
+            $result = mysqli_fetch_array($query);
+            var_dump($result);
+            echo $jogador;
+
+
             mysqli_close($link);
+
             ?>
 
         </div>
