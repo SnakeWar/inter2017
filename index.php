@@ -5,7 +5,12 @@
  * Date: 08/04/2017
  * Time: 08:08
  */
-include('templates/header.php'); ?>
+include('templates/header.php');
+include('templates/banco.php');
+
+
+
+?>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -48,27 +53,36 @@ include('templates/header.php'); ?>
     </a>
 </div>
 
-<h1>Escação dos Times</h1>
+<h1>Escalação dos Times</h1>
 
 <div class="row times">
 
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
-                Cras justo odio
+
+                <?php
+
+                $query = mysqli_query($link, "SELECT `jogador`.`nome`, `time`.`nome`
+FROM `time`
+    LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`
+WHERE (`time`.`nome` Time A)
+");
+
+
+                ?>
+                Time A
             </a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
+
+            <?php while ($jogador = mysqli_fetch_assoc($result)) { ?>
+
+            <a href="#" class="list-group-item"><?php echo $jogador['jogador.nome'] ?></a>
+
+            <?php
+            }
+            mysqli_close($link);
+            ?>
+
         </div>
     </div>
     <div class="col-md-4">
