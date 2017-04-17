@@ -25,7 +25,7 @@
 /* TIMES */
 
 .times{
-    margin: 15px 15px;
+    margin: 10px 5px;
     /*background-color: #3c763d;*/
 }
 
@@ -34,7 +34,7 @@
 /* TOP-SCORE */
 
 .top-score{
-    margin: 0 15px;
+    margin: 0 5px;
     /*background-color: #2b542c;*/
 }
 .titulo{
@@ -61,5 +61,7 @@ h1{
     text-align: center;
     /*color: white;*/
 }
-
+.direita{
+    float: right;
+}
 /* FIM */

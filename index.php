@@ -128,18 +128,12 @@ ORDER BY `jogador`.`nome` ASC");
     </div>
 </div>
 
-<div class="row titulo">
-    <div class="col-md-6">
-        <h1>Artilheiro</h1>
-    </div>
-    <div class="col-md-6">
-        <h1>Jogos</h1>
-    </div>
-</div>
 <div class="container-fluid top-score">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2">
+         <h1>Artilheiro</h1>
             <ul class="list-group">
+             <a href="#" class="list-group-item active">Jogador<p class="direita">Gols</p></a>
                 <?php
                 $result = mysqli_query($link, "SELECT `jogador`.`nome`, `info_gol`.`jogador_id`, COUNT(`info_gol`.`jogador_id`) as gols FROM info_gol LEFT JOIN `jogador` ON `jogador`.`id` = `info_gol`.`jogador_id` GROUP BY `jogador_id` ORDER BY COUNT(`info_gol`.`jogador_id`) DESC");
 
@@ -149,55 +143,47 @@ ORDER BY `jogador`.`nome` ASC");
                 }
 
                     ?>
-
-             
             </ul>
         </div>
-        <div class="col-md-6">
-            <div class="row">
-               <div class="col-md-3">
+        <div class="col-md-4">
+        <h1>Tabela</h1>
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Time<p class="direita">Pontos</p></a>
                     <ul class="list-group">
-                        <li class="list-group-item centro">27/05/2017</li>
-                        <li class="list-group-item centro">05/06/2017</li>
-                        <li class="list-group-item centro">10/06/2017</li>
-                        <li class="list-group-item centro">15/06/2017</li>
-                        <li class="list-group-item centro">20/06/2017</li>
-                        <li class="list-group-item centro">25/06/2017</li>
+                    <?php
+                        $result = mysqli_query($link, "SELECT `nome`, `pontos` FROM `time` ORDER BY `pontos` DESC");
+                        while ($classificacao = mysqli_fetch_array($result))
+                    {
+                            echo '<li class="list-group-item">' . $classificacao['nome'] . '<span class="badge">' . $classificacao['pontos'] . '</span></li>';
+                    }
+                    ?>
                     </ul>
-                </div>
-                <div class="col-md-3">
+        </div>
+    </div>
+    <div class="col-md-6">
+       <h1>Jogos</h1>
                     <ul class="list-group">
-                        <li class="list-group-item centro">Time A</li>
-                        <li class="list-group-item centro">Time B</li>
-                        <li class="list-group-item centro">Time C</li>
-                        <li class="list-group-item centro">Time A</li>
-                        <li class="list-group-item centro">Time B</li>
-                        <li class="list-group-item centro">Time C</li>
+                    <?php
+                        $result = mysqli_query($link, "SELECT `jogo_tem_time`.`id`, `jogo`.`data`
+                        FROM `jogo`
+                            LEFT JOIN `jogo_tem_time` ON `jogo_tem_time`.`jogo_id` = `jogo`.`id`
+                        ORDER BY `jogo`.`id` DESC");
+                        while ($jogos = mysqli_fetch_array($result))
+                    {
+                       ?><li class="list-group-item centro"><?php 
+                        echo $jogos['data'];
+                        echo $jogos['id'];
+//                        echo $jogos['gols'];
+                          ?>
+                          </li>
+                          <?php
+                    }
+                    ?>
                     </ul>
-                </div>
-                <div class="col-md-3">
-                    <ul class="list-group">
-                        <li class="list-group-item centro">1 x 0</li>
-                        <li class="list-group-item centro">2 x 0</li>
-                        <li class="list-group-item centro">1 x 4</li>
-                        <li class="list-group-item centro">5 x 2</li>
-                        <li class="list-group-item centro">3 x 0</li>
-                        <li class="list-group-item centro">1 x 2</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <ul class="list-group">
-                        <li class="list-group-item centro">Time A</li>
-                        <li class="list-group-item centro">Time B</li>
-                        <li class="list-group-item centro">Time C</li>
-                        <li class="list-group-item centro">Time A</li>
-                        <li class="list-group-item centro">Time B</li>
-                        <li class="list-group-item centro">Time C</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-<?php include('templates/footer.php'); ?>
+<?php
+mysqli_close($link);
+include('templates/footer.php'); ?>
