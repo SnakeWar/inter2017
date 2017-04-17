@@ -5,16 +5,9 @@
  * Date: 08/04/2017
  * Time: 08:08
  */
-<<<<<<< HEAD
-include('templates/header.php'); 
-include('templates/banco.php');
-=======
 include('templates/header.php');
 include('templates/banco.php');
 
-
-
->>>>>>> 5504b6ea8bad3dd14ee9578b60ec91ac7cf605c7
 ?>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -65,69 +58,46 @@ include('templates/banco.php');
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
-<<<<<<< HEAD
-                <?php 
+                <?php
 
                     $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 1");
-                    
                     $time = mysqli_fetch_array($result);
 
-                    echo $time['nome']
+                    echo $time['nome'];
                 ?>
             </a>
 
         <?php
-            $result = mysqli_query($link, "SELECT `time`.`nome` as nome_time, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
-            
+            $result = mysqli_query($link, "SELECT `nome`
+                        FROM `jogador`
+                        WHERE (`jogador`.`id_time` = 1)
+                        ORDER BY `jogador`.`nome` ASC");
             while($jogador = mysqli_fetch_array($result)){
-                
-                if($jogador['id_time'] == 1){
-
                 echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>';
-                
-                }
             }
         ?>
-=======
-                Time A
-            </a>
-            <?php
-
-            $query = mysqli_query($link, "SELECT `time`.`nome`, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
-            $jogador =  mysqli_num_rows($result);
-            $result = mysqli_fetch_array($query);
-            var_dump($result);
-            echo $jogador;
-
-
-            mysqli_close($link);
-
-            ?>
->>>>>>> 5504b6ea8bad3dd14ee9578b60ec91ac7cf605c7
-
         </div>
     </div>
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
-               <?php 
+               <?php
 
                     $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 2");
-                    
                     $time = mysqli_fetch_array($result);
 
-                    echo $time['nome']
+                    echo $time['nome'];
+
                 ?>
             </a>
            <?php
-            $result = mysqli_query($link, "SELECT `time`.`nome` as nome_time, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
+            $result = mysqli_query($link, "SELECT `nome`
+FROM `jogador`
+WHERE (`jogador`.`id_time` = 2)
+ORDER BY `jogador`.`nome` ASC");
             
             while($jogador = mysqli_fetch_array($result)){
-                if($jogador['id_time'] == 2){
-
                 echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>';
-                
-                }
             }
         ?>
         </div>
@@ -135,24 +105,23 @@ include('templates/banco.php');
     <div class="col-md-4">
         <div class="list-group">
             <a href="#" class="list-group-item active">
-               <?php 
+               <?php
 
                     $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 3");
                     
                     $time = mysqli_fetch_array($result);
 
-                    echo $time['nome']
+                    echo $time['nome'];
                 ?>
             </a>
             <?php
-            $result = mysqli_query($link, "SELECT `time`.`nome` as nome_time, `jogador`.`nome`, `jogador`.`id_time` FROM `time` LEFT JOIN `jogador` ON `jogador`.`id_time` = `time`.`id`");
+            $result = mysqli_query($link, "SELECT `nome`
+FROM `jogador`
+WHERE (`jogador`.`id_time` = 1)
+ORDER BY `jogador`.`nome` ASC");
             
             while($jogador = mysqli_fetch_array($result)){
-                if($jogador['id_time'] == 3){
-
                 echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>';
-                
-                }
             }
         ?>
         </div>
