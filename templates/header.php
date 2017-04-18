@@ -18,7 +18,7 @@
     <li role="presentation" class="active"><a href="#">HOME</a></li>
     <li role="presentation"><a href="#">TIMES</a></li>
     <li role="presentation"><a href="#">TOP-SCORE</a></li>
-    <li role="presentation"><a href="#">ADMIN</a></li>
+    <li role="presentation"><a href="admin/dash.php">ADMIN</a></li>
 </ul>
 
 <ul class="nav nav-pills min-menu">
@@ -31,7 +31,7 @@
     <li role="presentation" class="active"><a href="#">HOME</a></li>
     <li role="presentation"><a href="#">TIMES</a></li>
     <li role="presentation"><a href="#">TOP-SCORE</a></li>
-    <li role="presentation"><a href="#">ADMIN</a></li>
+    <li role="presentation"><a href="admin.php">ADMIN</a></li>
 </ul>
         </ul>
     </li>
