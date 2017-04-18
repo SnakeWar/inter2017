@@ -117,7 +117,7 @@ ORDER BY `jogador`.`nome` ASC");
             <?php
             $result = mysqli_query($link, "SELECT `nome`
 FROM `jogador`
-WHERE (`jogador`.`id_time` = 1)
+WHERE (`jogador`.`id_time` = 3)
 ORDER BY `jogador`.`nome` ASC");
             
             while($jogador = mysqli_fetch_array($result)){
@@ -135,7 +135,10 @@ ORDER BY `jogador`.`nome` ASC");
             <ul class="list-group">
              <a href="#" class="list-group-item active">Jogador<p class="direita">Gols</p></a>
                 <?php
-                $result = mysqli_query($link, "SELECT `jogador`.`nome`, `info_gol`.`jogador_id`, COUNT(`info_gol`.`jogador_id`) as gols FROM info_gol LEFT JOIN `jogador` ON `jogador`.`id` = `info_gol`.`jogador_id` GROUP BY `jogador_id` ORDER BY COUNT(`info_gol`.`jogador_id`) DESC");
+                $result = mysqli_query($link, "SELECT `info_gol`.`jogador_id`, SUM(`info_gol`.`quantidade`) as gols, `jogador`.`nome`
+                FROM `jogador`
+                    LEFT JOIN `info_gol` ON `info_gol`.`jogador_id` = `jogador`.`id`
+                WHERE (`info_gol`.`quantidade` > 0) GROUP BY `jogador_id` ORDER BY SUM(`info_gol`.`quantidade`) DESC");
 
                 while($artilheiro = mysqli_fetch_array($result)){
                      echo   '<li class="list-group-item">
@@ -164,19 +167,13 @@ ORDER BY `jogador`.`nome` ASC");
        <h1>Jogos</h1>
                     <ul class="list-group">
                     <?php
-                        $result = mysqli_query($link, "SELECT `jogo_tem_time`.`id`, `jogo`.`data`
-                        FROM `jogo`
-                            LEFT JOIN `jogo_tem_time` ON `jogo_tem_time`.`jogo_id` = `jogo`.`id`
-                        ORDER BY `jogo`.`id` DESC");
-                        while ($jogos = mysqli_fetch_array($result))
+                        $result = mysqli_query($link, "SELECT tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
+                            LEFT JOIN time tv ON tv.id = j.time_visitante
+                            LEFT JOIN time tc ON tc.id = j.time_casa");
+
+                    while ($jogos = mysqli_fetch_array($result))
                     {
-                       ?><li class="list-group-item centro"><?php 
-                        echo $jogos['data'];
-                        echo $jogos['id'];
-//                        echo $jogos['gols'];
-                          ?>
-                          </li>
-                          <?php
+                       echo '<li class="list-group-item centro">' . $jogos['data'] . ' ' . $jogos['time_casa'] . ' ' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . ' ' . $jogos['time_visitante'] . '</li>';
                     }
                     ?>
                     </ul>
