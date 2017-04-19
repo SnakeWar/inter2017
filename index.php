@@ -165,7 +165,13 @@ ORDER BY `jogador`.`nome` ASC");
     </div>
     <div class="col-md-6">
        <h1>Jogos</h1>
-                    <ul class="list-group">
+                    <table class="table table-striped">
+                    <tr>
+                        <th>Data</th>
+                        <th>Time (Casa)</th>
+                        <th>Placar</th>
+                        <th>Time (Visitante)</th>
+                    </tr>
                     <?php
                         $result = mysqli_query($link, "SELECT tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
                             LEFT JOIN time tv ON tv.id = j.time_visitante
@@ -173,10 +179,10 @@ ORDER BY `jogador`.`nome` ASC");
 
                     while ($jogos = mysqli_fetch_array($result))
                     {
-                       echo '<li class="list-group-item centro">' . $jogos['data'] . ' ' . $jogos['time_casa'] . ' ' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . ' ' . $jogos['time_visitante'] . '</li>';
+                       echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td></tr>';
                     }
                     ?>
-                    </ul>
+                    </table>
         </div>
     </div>
 </div>

@@ -64,4 +64,8 @@ h1{
 .direita{
     float: right;
 }
+.erro{
+    width: 400px;
+    margin-left: 15px
+}
 /* FIM */
