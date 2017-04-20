@@ -10,6 +10,10 @@ class SiteController
     {
         $model = new LoginForm();
 
+        if ($model->load($_POST) && $model->login()) {
+            header("Refresh:0");
+        }
+
         return [
             'model' => $model
         ];

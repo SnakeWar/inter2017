@@ -2,8 +2,8 @@
 
 use controllers\SiteController;
 
-foreach (SiteController::login() as $item) {
-    $$item = $item;
+foreach (SiteController::login() as $key => $item) {
+    $$key = $item;
 }
 
 /** @var $model \models\LoginForm */
@@ -14,18 +14,19 @@ foreach (SiteController::login() as $item) {
     <div class="col-md-4 col-md-offset-4">
         <div class="panel">
             <div class="panel-body">
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <div class="control-label">
                             <?= $model->getLabel('email') ?>
                         </div>
-                        <input class="form-control">
+                        <input name="email" value="<?= $model->email ?>" title="" class="form-control">
                     </div>
                     <div class="form-group">
                         <div class="control-label">
                             <?= $model->getLabel('password') ?>
                         </div>
-                        <input class="form-control">
+                        <input name="password" value="<?= $model->password ?>" title="" type="password"
+                               class="form-control">
                     </div>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" value="Entrar">

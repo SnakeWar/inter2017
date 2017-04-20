@@ -28,7 +28,6 @@
 </head>
 <body>
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -40,10 +39,19 @@ error_reporting(E_ALL);
  * Time: 6:56 PM
  */
 
-if (!isset($_SESSION['userLogged'])) {
-    include_once("views/login.php");
+
+function __autoload($class_name)
+{
+    $filename = str_replace('\\', DIRECTORY_SEPARATOR, $class_name) . '.php';
+
+    require $filename;
+}
+
+session_start();
+if (isset($_SESSION['userLogged'])) {
+    include_once("dash.php");
 } else {
-    include("dash.php");
+    include_once("views/login.php");
 }
 
 ?>
