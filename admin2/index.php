@@ -3,6 +3,11 @@
 	include('../templates/banco.php');
 
 	//FORM
+if(!$_GET){
+
+}
+else
+{
 	if($_GET['data'] == "")
 	{
 		echo '<p class="bg-danger erro">Data não selecionada.</p>';
@@ -12,22 +17,20 @@
 		$data = $_GET['data'];
 		$time_casa = $_GET['time_casa'];
 		$time_visitante = $_GET['time_visitante'];
-var_dump($data);
-var_dump($time_casa);
-var_dump($time_visitante);
+
 		if($time_casa == $time_visitante)
 		{
 			echo '<p class="bg-danger erro">Campo Time (Casa) e Time (Visitante) são obrigatório e não podem conter o mesmo time</p>';
 		}
 		else
 		{
-			$query = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('{$data}', '0', '0', '{$time_casa}', '{$time_visitante})";
+			$query = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('$data', '0', '0', '$time_casa', '$time_visitante')";
 
 
-				mysqli_query($link, $query) or die(mysqli_error());
-				var_dump(mysqli_error());
+				mysqli_query($link, $query) or die(mysqli_error($link));
 		}
 	}
+}
 ?>
 
 							<!-- Começo Cadastro -->
