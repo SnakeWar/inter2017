@@ -87,13 +87,14 @@ else
                         <th>Ações</th>
                     </tr>
                     <?php
-                        $result = mysqli_query($link, "SELECT tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
+                        $result = mysqli_query($link, "SELECT j.id AS id_jogo, tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
                             LEFT JOIN time tv ON tv.id = j.time_visitante
                             LEFT JOIN time tc ON tc.id = j.time_casa");
 
                     while ($jogos = mysqli_fetch_array($result))
                     {
-                       echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td> <button type="submit" class="btn btn-success">Editar</button> <button type="submit" class="btn btn-danger">Excluir</button></td></tr>';
+                    	$id_jogo = $jogos['id_jogo'];
+                       	echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td> <button type="submit" class="btn btn-success" onclick="editar('. $id_jogo .')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao(' . $id_jogo . ')">Excluir</button></td></tr>';
                     }
                     ?>
                     </table>
@@ -103,8 +104,18 @@ else
 $(function() {
     $( "#calendario" ).datepicker();
 });
-</script>
-
+  function confirmacao(id) {
+  if (confirm("Deseja Realmente Excluir?") == true) {
+  window.location = "remover_jogo.php?id=" + id;
+  }
+  else {
+  
+  }
+  }
+  function editar(id) {
+  window.location = "templates/editar_jogo.php?id=" + id;
+  }
+  </script>
 <?php
 	mysqli_close($link);
 	include('../templates/footer2.php');
