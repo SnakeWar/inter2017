@@ -8,7 +8,6 @@ class LoginForm
 {
     public $email;
     public $password;
-    private $_user;
 
     public function getLabel($attr)
     {
@@ -23,9 +22,6 @@ class LoginForm
     public function load($post)
     {
         foreach (get_object_vars($this) as $attr => $value) {
-            if ($attr == '_user')
-                continue;
-
             if (isset($post[$attr]) && !empty($post[$attr])) {
                 $this->$attr = $post[$attr];
             } else {
@@ -38,8 +34,8 @@ class LoginForm
 
     public function login()
     {
-        $user = new Usuario();
-        $this->_user = $user->findUserByEmail($this->email);
+        $user = new Usuario($this);
+        $user->findUserByEmail();
 
         if (!empty($this->_user)) {
             unset($this->_user['senha']);

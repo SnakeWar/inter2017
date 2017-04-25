@@ -8,9 +8,12 @@ class Usuario extends DataBase
     public $email;
     public $senha;
 
-    public function findUserByEmail($email)
+    public function findUserByEmail()
     {
-        $query = $this->link->query("SELECT * FROM usuario WHERE email = '$email'");
+        var_dump($this);
+        die();
+
+        $query = $this->link->query("SELECT * FROM usuario WHERE email = '$this->email'");
 
         if ($query->num_rows) {
             while ($row = $query->fetch_assoc()) {

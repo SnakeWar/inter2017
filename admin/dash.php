@@ -13,6 +13,6 @@ Helper::checkIfUserIsLogged();
 
 <div class="panel">
     <div class="panel-body">
-        Ola <?= $_SESSION['userName'] ?>
+        Ola <a href="./?r=site/logout"><?= $_SESSION['userLogged']['nome'] ?></a>
     </div>
 </div>

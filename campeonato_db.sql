@@ -128,6 +128,7 @@ INSERT INTO `time` (`id`, `nome`, `pontos`) VALUES
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
