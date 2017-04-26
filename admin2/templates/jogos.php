@@ -1,7 +1,7 @@
 <?php
-	include('../templates/header2.php');
-	include('../templates/banco.php');
-
+    $paginaAtiva = 'jogos';
+	include('header.php');
+	include('../../templates/banco.php');
 	//FORM
 if(!$_GET){
 
@@ -26,7 +26,7 @@ else
 		}
 		else
 		{
-			$query = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('$data', '$get_placar_casa', '$get_placar_visitante', '$time_casa', '$time_visitante')";
+			$add = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('$data', '$get_placar_casa', '$get_placar_visitante', '$time_casa', '$time_visitante')";
 
 
 				mysqli_query($link, $query) or die(mysqli_error($link));
@@ -37,7 +37,7 @@ else
 
 							<!-- Começo Cadastro -->
 <div class="row times">
-<div class="col-md-12">
+<div class="col-md-7">
 <h1>Cadastrar Jogo</h1>
 <br>
     <form class="form-inline">
@@ -52,14 +52,15 @@ else
             <select class="form-control" name="time_casa">
                 <option></option>
                 <?php
+
                 $times = mysqli_query($link, "SELECT `time`.`id`, `time`.`nome` FROM `time`");
 
                 foreach($times as $time){
-                    echo '<option value="' . $time['id'] . '">' . $time['nome'] . '<?=($TipoBeneficiario == \'Selecione\')?\'selected\':\'\'?></option>';
+                    echo '<option value="' . $time['id'] . '">' . $time['nome'] . '</option>';
                 }
                 ?>
             </select>
-            <label for="exampleInputName2">Placar Time da Casa</label>
+            <label for="exampleInputName2">Placar (Casa)</label>
             <input type="text" class="form-control" name="placar_casa" placeholder="">
         </div>
         <br>
@@ -69,12 +70,13 @@ else
             <select class="form-control" name="time_visitante">
                 <option></option>
                 <?php
+
                 foreach($times as $time){
                     echo '<option value="' . $time['id'] . '">' . $time['nome'] . '</option>';
                 }
                 ?>
             </select>
-            <label for="exampleInputName2">Placar Time Visitante</label>
+            <label for="exampleInputName2">Placar (Visitante)</label>
             <input type="text" class="form-control" name="placar_visitante" placeholder="">
         </div>
         <br>
@@ -129,10 +131,10 @@ $(function() {
   }
   }
   function editar(id) {
-  window.location = "templates/editar_jogo.php?id=" + id;
+  window.location = "editar_jogo.php?id=" + id;
   }
   </script>
 <?php
 	mysqli_close($link);
-	include('../templates/footer2.php');
+	include('footer.php');
 ?>

@@ -1,5 +1,5 @@
 <?php
-	include('header.php');
+	include('header2.php');
 	include('../../templates/banco.php');
 
     $id_jogo = $_GET['id'];
@@ -10,7 +10,7 @@
 $jogos = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
     $jogo = mysqli_fetch_array($jogos);
     /*$id_time_casa = $jogo['time_casa'];*/
-
+unset($_GET['id']);
 
 	//FORM
 if(!$_GET){
@@ -20,7 +20,7 @@ else
 {
 	if($_GET['data'] == null)
 	{
-		echo '<p class="bg-danger erro">Preencha os campos.</p>';
+		echo '<br><p class="bg-danger erro">Preencha os campos.</p>';
 	}
 	else
 	{
@@ -32,14 +32,13 @@ else
 
 		if($time_casa == $time_visitante)
 		{
-			echo '<p class="bg-danger erro">Campo Time (Casa) e Time (Visitante) são obrigatório e não podem conter o mesmo time</p>';
+			echo '<br><p class="bg-danger erro">Campo Time (Casa) e Time (Visitante) são obrigatório e não podem conter o mesmo time</p>';
 		}
 		else
 		{
 
 			$query = "UPDATE jogo SET `data` = '$data', `placar_casa` = '$placar_casa', `placar_visitante` = '$placar_visitante', `time_casa` = '$time_casa', `time_visitante` = '$time_visitante' WHERE `id` = '$id_jogo'";
 
-                var_dump($id_jogo);
 				mysqli_query($link, $query) or die(mysqli_error($link));
 				header('location: ../index.php');
 		}
@@ -49,7 +48,7 @@ else
 
 	<!-- Editar Jogo -->
 <div class="row times">
-<div class="col-md-12">
+<div class="col-md-6">
     <table class="table table-striped">
         <tr>
             <th>Data</th>
@@ -57,7 +56,7 @@ else
             <th>Placar</th>
             <th>Time (Visitante)</th>
         </tr>
-        <tr><td><?php echo $jogo['data'] ?></td><td><?php echo $jogo['time_casa'] ?></td><td><?php echo $jogo['placar_casa']?> X <?php echo $jogo['placar_visitante']?></td><td><?php echo $jogo['time_visitante']?></td></tr>;
+        <tr><td><?php echo $jogo['data'] ?></td><td><?php echo $jogo['time_casa'] ?></td><td><?php echo $jogo['placar_casa']?> X <?php echo $jogo['placar_visitante']?></td><td><?php echo $jogo['time_visitante']?></td></tr>
     </table>
     <br>
 <h1>Editar Jogo</h1>
@@ -105,13 +104,14 @@ else
     <br>
       <br>
   <button type="submit" class="btn btn-primary">Editar Jogo</button>
+  <a class="btn btn-success" onclick="voltar()">Voltar</a>
 </form>
 </div>
 </div>
 								<!-- Fim Editar Jogo -->
 <script>
 	function voltar(){
-		window.location = "index.php";
+		window.location = "jogos.php";
 	};
 	$(function() {
     $( "#calendario" ).datepicker();

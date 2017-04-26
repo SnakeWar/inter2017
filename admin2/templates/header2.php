@@ -18,11 +18,11 @@
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
 <body>
-<ul class="nav nav-pills gran-menu">
+<!-- <ul class="nav nav-pills gran-menu">
     <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
-    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>"><a href="artilheiro">ARTILHEIRO</a></li>
-    <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
+    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>"><a href="#">ARTILHEIRO</a></li>
+    <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin/dash.php">ADMIN</a></li>
 </ul>
 
 <ul class="nav nav-pills min-menu">
@@ -34,9 +34,9 @@
 <ul class="nav nav-pills nav-stacked ">
     <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
-    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>" ><a href="artilheiro.php">ARTILHEIRO</a></li>
+    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>" ><a href="#">ARTILHEIRO</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
 </ul>
         </ul>
     </li>
-</ul>
+</ul> -->
