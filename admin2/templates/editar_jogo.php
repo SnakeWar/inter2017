@@ -2,8 +2,15 @@
 	include('header.php');
 	include('../../templates/banco.php');
 
-$id_jogo = $_GET['id'];
-var_dump($id_jogo);
+    $id_jogo = $_GET['id'];
+    $resultado_query = "SELECT j.id AS id_jogo, tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa AS placar_casa, j.placar_visitante AS placar_visitante FROM jogo  j
+    LEFT JOIN time tv ON tv.id = j.time_visitante
+    LEFT JOIN time tc ON tc.id = j.time_casa WHERE j.id = $id_jogo";
+
+$jogos = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
+    $jogo = mysqli_fetch_array($jogos);
+    /*$id_time_casa = $jogo['time_casa'];*/
+
 
 	//FORM
 if(!$_GET){
@@ -11,7 +18,7 @@ if(!$_GET){
 }
 else
 {
-	if($_GET['data'] == "")
+	if($_GET['data'] == null)
 	{
 		echo '<p class="bg-danger erro">Preencha os campos.</p>';
 	}
@@ -29,11 +36,12 @@ else
 		}
 		else
 		{
-			$query = "UPDATE `jogo` SET  `data` = $data, `placar_casa` = '$placar_casa', `placar_visitante` = '$placar_visitante', `time_casa` = '$time_casa', `time_visitante` = '$time_visitante' WHERE `id` = '$id_jogo'";
 
+			$query = "UPDATE jogo SET `data` = '$data', `placar_casa` = '$placar_casa', `placar_visitante` = '$placar_visitante', `time_casa` = '$time_casa', `time_visitante` = '$time_visitante' WHERE `id` = '$id_jogo'";
 
+                var_dump($id_jogo);
 				mysqli_query($link, $query) or die(mysqli_error($link));
-				/*header('location: ../index.php');*/
+				header('location: ../index.php');
 		}
 	}
 }
@@ -42,12 +50,22 @@ else
 	<!-- Editar Jogo -->
 <div class="row times">
 <div class="col-md-12">
+    <table class="table table-striped">
+        <tr>
+            <th>Data</th>
+            <th>Time (Casa)</th>
+            <th>Placar</th>
+            <th>Time (Visitante)</th>
+        </tr>
+        <tr><td><?php echo $jogo['data'] ?></td><td><?php echo $jogo['time_casa'] ?></td><td><?php echo $jogo['placar_casa']?> X <?php echo $jogo['placar_visitante']?></td><td><?php echo $jogo['time_visitante']?></td></tr>;
+    </table>
+    <br>
 <h1>Editar Jogo</h1>
 <br>
 <form class="form-inline">
   <div class="form-group">
     <label for="exampleInputName2">Data</label>
-    <input type="text" class="form-control" id="calendario" name="data" placeholder="">
+    <input type="text" class="form-control" id="calendario" value="" name="data" placeholder="">
   </div>
   <br>
     <br>
@@ -59,12 +77,15 @@ else
 		$times = mysqli_query($link, "SELECT `time`.`id`, `time`.`nome` FROM `time`");
 
 		foreach($times as $time){
+
+            $time_id = $time['id'];
 			echo '<option value="' . $time['id'] . '">' . $time['nome'] . '</option>';
 	}
     ?>
     </select>
      <label for="exampleInputName2">Placar Time da Casa</label>
-    <input type="text" class="form-control" name="placar_casa" placeholder="">
+        <input type="text" class="form-control" name="placar_casa" placeholder="">
+        <input type="hidden" name="id" value="<?php echo $id_jogo ?>">
   </div>
   <br>
     <br>
