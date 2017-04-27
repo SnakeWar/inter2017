@@ -26,7 +26,7 @@ else{
 <br>
 <h1>Cadastrar Time</h1>
 <br>
-<form class="form-inline">
+<form>
         <div class="form-group">
             <label for="exampleInputName2">Nome</label>
             <input type="text" class="form-control" name="nome" placeholder="">
@@ -44,7 +44,6 @@ else{
  <table class="table table-striped">
         <tr>
             <th>Nome</th>
-            <th>Gols</th>
             <th>Pontos</th>
             <th>Ações</th>
         </tr>
@@ -52,7 +51,7 @@ else{
         $result = "SELECT nome, pontos, id FROM time ORDER BY pontos DESC";
         $times = mysqli_query($link, $result);
         foreach($times as $time){
-        	echo '<tr><td>' . $time['nome'] . '</td><td></td><td>' . $time['pontos'] . '</td><td><button type="submit" class="btn btn-success" onclick="editar('. $time['id'] .')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao('. $time['id'] .')">Excluir</button></td></tr>';
+        	echo '<tr><td>' . $time['nome'] . '</td><td>' . $time['pontos'] . '</td><td><button type="submit" class="btn btn-success" onclick="editar('. $time['id'] .')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao('. $time['id'] .')">Excluir</button></td></tr>';
         }
         ?>
     </table>

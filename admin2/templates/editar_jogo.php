@@ -49,24 +49,14 @@ else
 	<!-- Editar Jogo -->
 <div class="row times">
 <div class="col-md-6">
-    <table class="table table-striped">
-        <tr>
-            <th>Data</th>
-            <th>Time (Casa)</th>
-            <th>Placar</th>
-            <th>Time (Visitante)</th>
-        </tr>
-        <tr><td><?php echo $jogo['data'] ?></td><td><?php echo $jogo['time_casa'] ?></td><td><?php echo $jogo['placar_casa']?> X <?php echo $jogo['placar_visitante']?></td><td><?php echo $jogo['time_visitante']?></td></tr>
-    </table>
-    <br>
+<br>
 <h1>Editar Jogo</h1>
 <br>
-<form class="form-inline">
+<form>
   <div class="form-group">
     <label for="exampleInputName2">Data</label>
     <input type="text" class="form-control" id="calendario" value="" name="data" placeholder="">
   </div>
-  <br>
     <br>
   <div class="form-group">
     <label for="exampleInputEmail2">Time Casa</label>
@@ -86,7 +76,6 @@ else
         <input type="text" class="form-control" name="placar_casa" placeholder="">
         <input type="hidden" name="id" value="<?php echo $id_jogo ?>">
   </div>
-  <br>
     <br>
    <div class="form-group">
     <label for="exampleInputName2">Time Visitante</label>
@@ -101,12 +90,24 @@ else
      <label for="exampleInputName2">Placar Time Visitante</label>
     <input type="text" class="form-control" name="placar_visitante" placeholder="">
   </div>
-    <br>
-      <br>
   <button type="submit" class="btn btn-primary">Editar Jogo</button>
   <a class="btn btn-success" onclick="voltar()">Voltar</a>
 </form>
 </div>
+<div class="col-md-6">
+<br>
+<h1>Dados anteriores do Jogo</h1>
+<br>
+    <table class="table table-striped">
+        <tr>
+            <th>Data</th>
+            <th>Time (Casa)</th>
+            <th>Placar</th>
+            <th>Time (Visitante)</th>
+        </tr>
+        <tr><td><?php echo $jogo['data'] ?></td><td><?php echo $jogo['time_casa'] ?></td><td><?php echo $jogo['placar_casa']?> X <?php echo $jogo['placar_visitante']?></td><td><?php echo $jogo['time_visitante']?></td></tr>
+    </table>
+    </div>
 </div>
 								<!-- Fim Editar Jogo -->
 <script>

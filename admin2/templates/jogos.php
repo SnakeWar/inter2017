@@ -26,10 +26,14 @@ else
 		}
 		else
 		{
-			$add = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('$data', '$get_placar_casa', '$get_placar_visitante', '$time_casa', '$time_visitante')";
+            if($get_placar_casa == null || $get_placar_visitante == null){
+                echo '<p class="bg-danger erro">Caso o jogo não tenha acontecido ainda, digite "0" nos dois placares.</p>';
+            }
+            else{
+                $add = "INSERT INTO `jogo` (`data`, `placar_casa`, `placar_visitante`, `time_casa`, `time_visitante`) VALUES ('$data', '$get_placar_casa', '$get_placar_visitante', '$time_casa', '$time_visitante')";
 
-
-				mysqli_query($link, $query) or die(mysqli_error($link));
+                mysqli_query($link, $add) or die(mysqli_error($link));
+            }
 		}
 	}
 }
@@ -37,16 +41,14 @@ else
 
 							<!-- Começo Cadastro -->
 <div class="row times">
-<div class="col-md-7">
+<div class="col-md-4">
 <h1>Cadastrar Jogo</h1>
 <br>
-    <form class="form-inline">
+    <form>
         <div class="form-group">
             <label for="exampleInputName2">Data</label>
             <input type="text" class="form-control" id="calendario" name="data" placeholder="">
         </div>
-        <br>
-        <br>
         <div class="form-group">
             <label for="exampleInputEmail2">Time Casa</label>
             <select class="form-control" name="time_casa">
@@ -64,7 +66,6 @@ else
             <input type="text" class="form-control" name="placar_casa" placeholder="">
         </div>
         <br>
-        <br>
         <div class="form-group">
             <label for="exampleInputName2">Time Visitante</label>
             <select class="form-control" name="time_visitante">
@@ -79,17 +80,15 @@ else
             <label for="exampleInputName2">Placar (Visitante)</label>
             <input type="text" class="form-control" name="placar_visitante" placeholder="">
         </div>
-        <br>
-        <br>
         <button type="submit" class="btn btn-primary">Adicionar Jogo</button>
     </form>
 </div>
-</div>
+
 								<!-- Fim Cadastro -->
 
 							<!-- Começo Lista de Jogos -->
-<div class="row times">
-<div class="col-md-12">
+
+<div class="col-md-8">
 <h1>Jogos</h1>
 <br>
                     <table class="table table-striped">
@@ -112,16 +111,20 @@ else
                         $post_placar_casa = $jogos['placar_casa'];
                         $post_time_visitante = $jogos['time_visitante'];
                         $post_placar_visitante = $jogos['placar_visitante'];*/
-                       	echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td> <button type="submit" class="btn btn-success" onclick="editar('. $post_id_jogo . ')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao(' . $post_id_jogo . ')">Excluir</button></td></tr>';
+                       	echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td><button type="submit" class="btn btn-success" onclick="editar('. $post_id_jogo . ')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao(' . $post_id_jogo . ')">Excluir</button></td></tr>';
                     }
                     ?>
                     </table>
+                    </div>
+                    </div>
 									<!-- Fim Lista de Jogos -->
-<!-- Datepicker -->
+
 <script>
+            /* Datepicker*/
 $(function() {
     $( "#calendario" ).datepicker();
 });
+            /* FIM Datepicker*/
   function confirmacao(id) {
   if (confirm("Deseja Realmente Excluir?") == true) {
   window.location = "remover_jogo.php?id=" + id;
