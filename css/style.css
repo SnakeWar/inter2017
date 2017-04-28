@@ -64,11 +64,17 @@ h1{
 .direita{
     float: right;
 }
+.esquerda{
+    float: left;
+}
 .erro{
     width: 400px;
     margin-left: 15px
 }
 .margin-left{
     margin-left: 10px;
+}
+.pad-bot{
+    padding-bottom: 20px !important;
 }
 /* FIM */

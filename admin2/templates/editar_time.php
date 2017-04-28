@@ -10,7 +10,8 @@
     /*$id_time_casa = $jogo['time_casa'];*/
 unset($_GET['id']);
 
-	//FORM
+	//FORM//
+  //
 if(!$_GET){
 
 }
@@ -34,7 +35,6 @@ else
 			$query = "UPDATE `time` SET `nome` = '$nome', `pontos` = '$pontos' WHERE `id` = '$id_time'";
 
 				mysqli_query($link, $query) or die(mysqli_error($link));
-				header('location: tabela.php');
 		}
 	}
 }
@@ -57,11 +57,11 @@ else
     <input type="text" class="form-control" value="<?php echo $time['pontos'];?>" name="pontos" placeholder="">
   </div>
   <button type="submit" class="btn btn-primary">Editar Time</button>
-  <a class="btn btn-success" onclick="voltar()">Voltar</a>
+  <a class="btn btn-success" href="tabela.php">Voltar</a>
 </form>
 <h1>Adicionar Jogador</h1>
 <br>
-<form onsubmit="add(e);">
+<form action="addjogador.php" method="POST";">
 <input type="hidden" name="id_time" value="<?php echo $id_time ?>">
   <div class="form-group">
     <label for="exampleInputName2">Nome</label>
@@ -73,8 +73,7 @@ else
     ?>
  <input type="text" class="form-control" name="time" value="<?php echo $time['nome'] ?>" placeholder="" disabled>
     <br>
-  <button class="btn btn-primary">Adicionar</button>
-  <a class="btn btn-success" onclick="voltar()">Voltar</a>
+  <button type="submit" class="btn btn-primary">Adicionar</button>
 </form>
 </div>
 <div class="col-md-6">
@@ -90,10 +89,10 @@ else
                 ?>
             </a>
             <?php
-            $result = mysqli_query($link, "SELECT `nome` FROM `jogador` WHERE (`jogador`.`id_time` = '$id_time') ORDER BY `jogador`.`nome` ASC");
+            $result = mysqli_query($link, "SELECT `nome`, `id` AS id_jogador FROM `jogador` WHERE (`jogador`.`id_time` = '$id_time') ORDER BY `jogador`.`nome` ASC");
 
             while($jogador = mysqli_fetch_array($result)){
-                echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>';
+                echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>  <a class="btn btn-danger" href="remover_jogador.php?id='. $jogador['id_jogador'] .')">Excluir</a>';
             }
         ?>
         </div>
@@ -101,11 +100,18 @@ else
 </div>
 								      <!-- Fim Editar Jogo -->
 <script>
+function confirmacao(id) {
+  if (confirm("Deseja Realmente Excluir?") == true) {
+  window.location = "remover_jogador.php?id=" + id;
+  }
+  else {
+
+  }
+};
 	function voltar(){
 		window.location = "tabela.php";
 	};
   function add(){
-    e.preventDefault();
     var nome == document.getElementsByName('nome_jogador');
     var time == document.getElementsByName('id_time');
     window.location = "addjogador.php?nome=" + nome + "time=" + time;
