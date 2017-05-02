@@ -26,9 +26,9 @@ echo '<br><a class="btn btn-success" href="editar_time.php">Voltar</a>';
 		unset($_POST['id_time']);
 		unset($_POST['nome_jogador']);
 		unset($nome_jogador);
-		/*header('location: editar_time.php');*/
-		echo '<br><p class="bg-success erro">Jogador ' . $nome_jogador .' Adicionado!</p>';
-		echo '<br><a class="btn btn-success" href="editar_time.php?id='. $id_time .'">Voltar</a>';
+		header('location: editar_time.php?id=' . $id_time);
+		/*echo '<br><p class="bg-success erro">Jogador ' . $nome_jogador .' Adicionado!</p>';
+		echo '<br><a class="btn btn-success" href="editar_time.php?id='. $id_time .'">Voltar</a>';*/
 	}
 }
 include('footer.php');

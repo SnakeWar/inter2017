@@ -92,7 +92,9 @@ else
             $result = mysqli_query($link, "SELECT `nome`, `id` AS id_jogador FROM `jogador` WHERE (`jogador`.`id_time` = '$id_time') ORDER BY `jogador`.`nome` ASC");
 
             while($jogador = mysqli_fetch_array($result)){
-                echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>  <a class="btn btn-danger" href="remover_jogador.php?id='. $jogador['id_jogador'] .')">Excluir</a>';
+                echo '<p href="#" class="list-group-item">' . $jogador['nome'] .
+                '<a class="glyphicon glyphicon-remove direita excluir" href="remover_jogador.php?id='. $jogador['id_jogador'] .'"></a>
+                </p>';
             }
         ?>
         </div>
@@ -118,5 +120,6 @@ function confirmacao(id) {
   };
 </script>
 <?php
+unset($_GET['deucerto']);
 	include('footer.php');
 ?>

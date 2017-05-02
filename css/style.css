@@ -77,4 +77,12 @@ h1{
 .pad-bot{
     padding-bottom: 20px !important;
 }
+.excluir{
+    color: #C80000;
+    font-size: 16px
+}
+.excluir:hover{
+    text-decoration: none;
+    color: #C80000;
+}
 /* FIM */
