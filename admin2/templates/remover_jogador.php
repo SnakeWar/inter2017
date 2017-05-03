@@ -11,6 +11,6 @@ $time_id = $id_time['id_time'];
 
 $delete = "DELETE FROM `jogador` WHERE `jogador`.`id` = '$id_jogador'";
 mysqli_query($link, $delete) or die(mysqli_error($link));
-
+mysqli_close($link);
 header('location: editar_time.php?id=' . $time_id);
 ?>

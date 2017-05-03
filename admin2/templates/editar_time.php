@@ -121,5 +121,6 @@ function confirmacao(id) {
 </script>
 <?php
 unset($_GET['deucerto']);
+mysqli_close($link);
 	include('footer.php');
 ?>

@@ -62,11 +62,11 @@ else{
     </div>
     <script>
   function confirmacao(id) {
-  if (confirm("Deseja Realmente Excluir?") == true) {
+  if (confirm("Primeiro, precisa remover todos os jogadores desse time antes de excluí-lo!") == true) {
   window.location = "remover_time.php?id=" + id;
   }
   else {
-  
+
   }
   }
   function editar(id) {
@@ -74,5 +74,6 @@ else{
   }
   </script>
 <?php
+mysqli_close($link);
 include('footer.php');
 ?>

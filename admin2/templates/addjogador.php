@@ -31,5 +31,6 @@ echo '<br><a class="btn btn-success" href="editar_time.php">Voltar</a>';
 		echo '<br><a class="btn btn-success" href="editar_time.php?id='. $id_time .'">Voltar</a>';*/
 	}
 }
+mysqli_close($link);
 include('footer.php');
 ?>

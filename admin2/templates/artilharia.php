@@ -24,5 +24,6 @@ include('../../templates/banco.php');
         </div>
         </div>
 <?php
+mysqli_close($link);
 include('footer.php');
 ?>

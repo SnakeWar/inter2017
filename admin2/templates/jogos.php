@@ -102,7 +102,7 @@ else
                     <?php
                         $result = mysqli_query($link, "SELECT j.id AS id_jogo, tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa AS placar_casa, j.placar_visitante AS placar_visitante FROM jogo  j
                             LEFT JOIN time tv ON tv.id = j.time_visitante
-                            LEFT JOIN time tc ON tc.id = j.time_casa");
+                            LEFT JOIN time tc ON tc.id = j.time_casa ORDER BY data DESC");
 
                     while ($jogos = mysqli_fetch_array($result))
                     {
@@ -111,7 +111,7 @@ else
                         $post_placar_casa = $jogos['placar_casa'];
                         $post_time_visitante = $jogos['time_visitante'];
                         $post_placar_visitante = $jogos['placar_visitante'];*/
-                       	echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td><button type="submit" class="btn btn-success" onclick="editar('. $post_id_jogo . ')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao(' . $post_id_jogo . ')">Excluir</button></td></tr>';
+                       	echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td><td><button type="submit" class="btn btn-primary" onclick="addGol(' . $post_id_jogo . ')">Add Gol(s)</button> <button type="submit" class="btn btn-success" onclick="editar('. $post_id_jogo . ')">Editar</button> <button type="submit" class="btn btn-danger" onclick="confirmacao(' . $post_id_jogo . ')">Excluir</button></td></tr>';
                     }
                     ?>
                     </table>
@@ -135,6 +135,9 @@ $(function() {
   }
   function editar(id) {
   window.location = "editar_jogo.php?id=" + id;
+  }
+  function addGol(id) {
+  window.location = "addgol_jogo.php?id=" + id;
   }
   </script>
 <?php

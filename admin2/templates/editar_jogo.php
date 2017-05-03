@@ -119,5 +119,6 @@ else
 });
 </script>
 <?php
+mysqli_close($link);
 	include('footer.php');
 ?>

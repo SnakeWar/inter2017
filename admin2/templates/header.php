@@ -21,10 +21,8 @@
 <ul class="nav nav-pills gran-menu">
     <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
-    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>"><a href="artilharia.php">ARTILHEIRO</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
 </ul>
-
 <ul class="nav nav-pills min-menu">
     <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -34,7 +32,6 @@
 <ul class="nav nav-pills nav-stacked ">
     <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
-    <li role="presentation" class="<?php echo ($paginaAtiva=='artilharia')?'active':''; ?>" ><a href="artilharia.php">ARTILHEIRO</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
 </ul>
         </ul>
