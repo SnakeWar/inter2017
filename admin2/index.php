@@ -11,7 +11,7 @@ include('header.php');
 				<h3 class="panel-title">Login</h3>
 			</div>
 			<div class="panel-body">
-				<form>
+				<form action="templates/jogos.php">
 					<div class="form-group">
 						<label for="">Email</label>
 						<input type="email" class="form-control" id="" placeholder="">
