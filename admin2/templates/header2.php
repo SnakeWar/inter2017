@@ -18,6 +18,8 @@
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
 <body>
+<div class="page-header">
+</div>
 <!-- <ul class="nav nav-pills gran-menu">
     <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
     <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>

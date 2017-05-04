@@ -18,13 +18,13 @@
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
 <body>
+<div class="page-header">
 <ul class="nav nav-pills gran-menu">
     <li role="presentation" class="active"><a href="#">HOME</a></li>
     <li role="presentation"><a href="#">TIMES</a></li>
     <li role="presentation"><a href="#">TOP-SCORE</a></li>
     <li role="presentation"><a href="admin/dash.php">ADMIN</a></li>
 </ul>
-
 <ul class="nav nav-pills min-menu">
     <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -40,3 +40,4 @@
         </ul>
     </li>
 </ul>
+</div>

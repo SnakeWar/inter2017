@@ -1,88 +1,86 @@
 /* HEADER */
 .gran-menu{
-    margin-left: 15px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+margin-left: 15px;
+margin-top: 15px;
+margin-bottom: 15px;
 }
 @media screen and (max-width: 480px){
-    .gran-menu {
-        display: none;
-    }
+.gran-menu {
+display: none;
+}
 }
 @media screen and (min-width: 479px){
-    .min-menu{
-        display: none;
-    }
+.min-menu{
+display: none;
+}
 }
 .menu-icon{
-    font-size: 25px !important;
+font-size: 25px !important;
 }
 .dropdown-menu-large{
-    width: 100% !important;
+width: 100% !important;
 }
 /*FIM*/
 /* ---------------------------- */
 /* TIMES */
-
 .times{
-    margin: 10px 5px;
-    /*background-color: #3c763d;*/
+margin: 10px 5px;
+/*background-color: #3c763d;*/
 }
-
 /* FIM */
 /* ---------------------------- */
 /* TOP-SCORE */
-
 .top-score{
-    margin: 0 5px;
-    /*background-color: #2b542c;*/
+margin: 0 5px;
+/*background-color: #2b542c;*/
 }
 .titulo{
-    margin-bottom: 15px;
-    margin-top: -15px;
+margin-bottom: 15px;
+margin-top: -15px;
 }
-
 /* FIM */
 /* ---------------------------- */
 /*  FOOTER */
-
 .centro{
-    text-align: center;
+text-align: center;
 }
 .footer{
-
 }
-
 /*  FIM */
 /* ---------------------------- */
 /* GERAL */
-
 h1{
-    text-align: center;
-    /*color: white;*/
+text-align: center;
+/*color: white;*/
 }
 .direita{
-    float: right;
+float: right;
 }
 .esquerda{
-    float: left;
+float: left;
 }
 .erro{
-    width: 400px;
-    margin-left: 15px
+width: 400px;
+margin-left: 15px
 }
 .margin-left{
-    margin-left: 10px;
+margin-left: 10px;
 }
 .pad-bot{
-    padding-bottom: 20px !important;
+padding-bottom: 20px !important;
 }
 .excluir{
-    color: #C80000;
-    font-size: 16px
+color: #C80000;
+font-size: 16px
 }
 .excluir:hover{
-    text-decoration: none;
-    color: #C80000;
+text-decoration: none;
+color: #C80000;
 }
 /* FIM */
+
+/*LOGIN*/
+.centralizado{
+	margin: 0 2px;
+}
+/*FIM LOGIN*/
