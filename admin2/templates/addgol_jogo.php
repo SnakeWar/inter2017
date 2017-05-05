@@ -13,7 +13,7 @@ $timeb = $jogo['timev_id'];
 <div class="row times">
     <div class="col-md-4">
         <br>
-        <h1>Gol(s) do Jogo</h1>
+        <h1>Adicionar Gol(s)</h1>
         <br>
         <form action="add_gol.php" method="POST">
             <input type="hidden" name="id_jogo" value="<?php echo $id_jogo ?>">
@@ -28,7 +28,7 @@ $timeb = $jogo['timev_id'];
                     }
                     ?>
                 </select>
-                <label for="exampleInputName2">Placar (Casa)</label>
+                <label for="exampleInputName2">Quantidade de Gol(s)</label>
                 <input type="text" class="form-control" name="quantidade" placeholder="">
             </div>
             <button type="submit" class="btn btn-primary">Adicionar Gol</button>
