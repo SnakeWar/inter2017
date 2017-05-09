@@ -1,4 +1,8 @@
-<?php 
+<?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 include('../../templates/banco.php');
 $id_jogador = $_GET['id'];
 

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 $paginaAtiva = 'times';
 include('header.php');
 include('../../templates/banco.php');
@@ -53,7 +57,7 @@ else{
 </div>
 <script>
 function confirmacao(id) {
-if (confirm("Primeiro, precisa remover todos os jogadores desse time antes de excluí-lo!") == true) {
+if (confirm("Esta ação excluirá todos os jogadores desse time!") == true) {
 window.location = "remover_time.php?id=" + id;
 }
 else {

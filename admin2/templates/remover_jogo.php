@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 include('../../templates/banco.php');
 $id_jogo = $_GET['id'];
 $delete_info_gol = "DELETE FROM info_gol WHERE jogo_id = '$id_jogo'";

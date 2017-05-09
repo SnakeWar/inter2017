@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 	include('header2.php');
 	include('../../templates/banco.php');
 
@@ -61,7 +65,7 @@ else
 </form>
 <h1>Adicionar Jogador</h1>
 <br>
-<form action="addjogador.php" method="POST";">
+<form action="addjogador.php" method="POST">
 <input type="hidden" name="id_time" value="<?php echo $id_time ?>">
   <div class="form-group">
     <label for="exampleInputName2">Nome</label>

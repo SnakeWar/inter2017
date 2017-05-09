@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 $paginaAtiva = "artilharia";
 include('header.php');
 include('../../templates/banco.php');

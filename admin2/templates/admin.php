@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 $paginaAtiva = "admin";
 include('header.php');
 ?>
@@ -6,7 +10,7 @@ include('header.php');
 	<div class="col-md-4">
 	</div>
 	<div class="col-md-4">
-		<a href="../index.php" class="btn btn-success btn-lg">Sair</a>
+		<a href="../logout.php" class="btn btn-success btn-lg largo">Sair</a>
 	</div>
 	<div class="col-md-4">
 	</div>

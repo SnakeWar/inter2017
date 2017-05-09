@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+header('location:../index.php');
+}
 include('header2.php');
 include('../../templates/banco.php');
 $id_time = $_POST['id_time'];

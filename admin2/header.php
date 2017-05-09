@@ -12,7 +12,7 @@
         <link href="../css/style.css" rel="stylesheet">
     </head>
     <body>
-    
+    <div class="page-header">
         <ul class="nav nav-pills gran-menu">
             <li role="presentation" class="<?php echo ($paginaAtiva=='home')?'active':''; ?>"><a href="../index.php">HOME</a></li>
             <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin2/index.php">ADMIN</a></li>
@@ -30,4 +30,4 @@
                 </ul>
             </li>
         </ul>
-        
+        </div>
