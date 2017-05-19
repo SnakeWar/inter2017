@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Campeonato Altinão 2017</title>
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.css" rel="stylesheet">
         <!-- Meu Estilo -->
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -29,5 +29,6 @@
                     </ul>
                 </ul>
             </li>
+            <img src="../img/logo.png">
         </ul>
         </div>

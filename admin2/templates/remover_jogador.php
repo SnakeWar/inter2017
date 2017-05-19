@@ -6,9 +6,11 @@ header('location:../index.php');
 include('../../templates/banco.php');
 $id_jogador = $_GET['id'];
 
+$delete_info_gol = "DELETE FROM info_gol WHERE jogador_id = '$id_jogador'";
+mysqli_query($link, $delete_info_gol) or die(mysqli_error($link));
+
 $select = "SELECT id_time, id FROM jogador WHERE id = $id_jogador";
 $jogador = mysqli_query($link, $select);
-
 
 $id_time = mysqli_fetch_array($jogador);
 $time_id = $id_time['id_time'];

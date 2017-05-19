@@ -10,5 +10,5 @@ mysqli_query($link, $delete_jogadores) or die(mysqli_error($link));
 $delete = "DELETE FROM `time` WHERE id = '$id_time'";
 mysqli_query($link, $delete) or die(mysqli_error($link));
 mysqli_close($link);
-header('location: tabela.php?id=' . $id_time);
+header('location: times.php?id=' . $id_time);
 ?>

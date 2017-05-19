@@ -17,26 +17,26 @@ include('templates/banco.php');
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     </ol>
     <!-- Wrapper for slides -->
-    <!--    <div class="carousel-inner" role="listbox">-->
-    <!--        <div class="item active">-->
-    <!--            <img src="img/maxresdefault.jpg" alt="...">-->
-    <!--            <div class="carousel-caption">-->
-    <!--                ...-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--        <div class="item">-->
-    <!--            <img src="img/geralteciri.jpg" alt="...">-->
-    <!--            <div class="carousel-caption">-->
-    <!--                ...-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--        <div class="item">-->
-    <!--            <img src="img/geralt.jpg" alt="...">-->
-    <!--            <div class="carousel-caption">-->
-    <!--                ...-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+    <div class="carousel-inner" role="listbox">
+            <div class="item active">
+               <img src="img/campo1.jpg" alt="...">
+               <div class="carousel-caption">
+                    ...
+               </div>
+           </div>
+            <div class="item">
+                <img src="img/campo2.jpg" alt="...">
+               <div class="carousel-caption">
+                   ...
+               </div>
+            </div>
+            <div class="item">
+               <img src="img/campo3.jpg" alt="...">
+               <div class="carousel-caption">
+                   ...
+               </div>
+          </div>
+        </div>
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -53,7 +53,7 @@ include('templates/banco.php');
         <div class="list-group">
             <a href="#" class="list-group-item active">
                 <?php
-                $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 1");
+                $result = mysqli_query($link, "SELECT `nome` FROM `time` WHERE `id` = 4");
                 $time = mysqli_fetch_array($result);
                 echo $time['nome'];
                 ?>
@@ -61,7 +61,7 @@ include('templates/banco.php');
             <?php
             $result = mysqli_query($link, "SELECT `nome`
             FROM `jogador`
-            WHERE (`jogador`.`id_time` = 1)
+            WHERE (`jogador`.`id_time` = 4)
             ORDER BY `jogador`.`nome` ASC");
             while($jogador = mysqli_fetch_array($result)){
             echo '<a href="#" class="list-group-item">' . $jogador['nome'] . '</a>';
@@ -115,23 +115,7 @@ include('templates/banco.php');
 </div>
 <div class="container-fluid top-score">
     <div class="row">
-        <div class="col-md-2">
-            <h1>Artilheiro</h1>
-            <ul class="list-group">
-                <a href="#" class="list-group-item active">Jogador<p class="direita">Gols</p></a>
-                <?php
-                $result = mysqli_query($link, "SELECT `info_gol`.`jogador_id`, SUM(`info_gol`.`quantidade`) as gols, `jogador`.`nome`
-                FROM `jogador`
-                LEFT JOIN `info_gol` ON `info_gol`.`jogador_id` = `jogador`.`id`
-                WHERE (`info_gol`.`quantidade` > 0) GROUP BY `jogador_id` ORDER BY SUM(`info_gol`.`quantidade`) DESC");
-                while($artilheiro = mysqli_fetch_array($result)){
-                echo   '<li class="list-group-item">
-                    <span class="badge">' . $artilheiro['gols'] . '</span>' . $artilheiro['nome'] . '</li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h1>Tabela</h1>
                 <div class="list-group">
                     <a href="#" class="list-group-item active">Time<p class="direita">Pontos</p></a>
@@ -156,18 +140,61 @@ include('templates/banco.php');
                         <th>Time (Visitante)</th>
                     </tr>
                     <?php
-                    $result = mysqli_query($link, "SELECT tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
+                    $result = mysqli_query($link, "SELECT j.id AS id_jogo,tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa, j.placar_visitante FROM jogo  j
                     LEFT JOIN time tv ON tv.id = j.time_visitante
                     LEFT JOIN time tc ON tc.id = j.time_casa");
                     while ($jogos = mysqli_fetch_array($result))
                     {
+                        $jogo_id = $jogos['id_jogo'];
                     echo '<tr><td>' . $jogos['data'] . '</td><td>' . $jogos['time_casa'] . '</td><td>' . $jogos['placar_casa'] . ' X ' . $jogos['placar_visitante'] . '</td><td>' . $jogos['time_visitante'] . '</td></tr>';
+
+                    $result_gols = mysqli_query($link, "SELECT jo.nome AS jogador, gol.quantidade AS gols FROM info_gol AS gol LEFT JOIN jogador AS jo ON jo.id = gol.jogador_id WHERE gol.jogo_id = '$jogo_id'");
+
+                    while ($gols = mysqli_fetch_array($result_gols))
+                    {
+                    echo '<tr><td></td><td></td><td><i><u><b>' . $gols['jogador'] . '</b>: ' . $gols['gols'] . ' Gol(s)</i></u></td><td></td></tr>';
                     }
+                    }
+
                     ?>
                 </table>
             </div>
+            <div class="col-md-3">
+            <h1>Artilheiro</h1>
+            <ul class="list-group">
+                <a href="#" class="list-group-item active">Jogador<p class="direita">Gols</p></a>
+                <?php
+                $result = mysqli_query($link, "SELECT `info_gol`.`jogador_id`, SUM(`info_gol`.`quantidade`) as gols, `jogador`.`nome`
+                FROM `jogador`
+                LEFT JOIN `info_gol` ON `info_gol`.`jogador_id` = `jogador`.`id`
+                WHERE (`info_gol`.`quantidade` > 0) GROUP BY `jogador_id` ORDER BY SUM(`info_gol`.`quantidade`) DESC");
+                while($artilheiro = mysqli_fetch_array($result)){
+                echo   '<li class="list-group-item">
+                    <span class="badge">' . $artilheiro['gols'] . '</span>' . $artilheiro['nome'] . '</li>';
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
     </div>
+    <div class="row times">
+    <h1>Patrocinadores</h1>
+  <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="img/campo1.jpg" alt="Patrocinio 1">
+    </a>
+  </div>
+   <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="img/campo2.jpg" alt="Patrocinio 2">
+    </a>
+  </div>
+   <div class="col-xs-6 col-md-4">
+    <a href="3" class="thumbnail">
+      <img src="img/campo3.jpg" alt="Patrocinio 3">
+    </a>
+  </div>
+</div>
     <?php
     mysqli_close($link);
     include('templates/footer.php'); ?>

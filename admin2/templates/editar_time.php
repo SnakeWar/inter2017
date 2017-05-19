@@ -5,12 +5,7 @@ header('location:../index.php');
 }
 	include('header2.php');
 	include('../../templates/banco.php');
-
-    $id_time = $_GET['id'];
-    $resultado_query = "SELECT nome, pontos FROM time WHERE id = $id_time";
-
-  $times = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
-  $time = mysqli_fetch_array($times);
+$id_time = $_GET['id'];
     /*$id_time_casa = $jogo['time_casa'];*/
 unset($_GET['id']);
 
@@ -42,6 +37,13 @@ else
 		}
 	}
 }
+
+
+$resultado_query = "SELECT nome, pontos FROM time WHERE id = $id_time";
+
+$times = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
+$time = mysqli_fetch_array($times);
+
 ?>
 
 	                       <!-- Editar Jogo -->
@@ -115,7 +117,7 @@ function confirmacao(id) {
   }
 };
 	function voltar(){
-		window.location = "tabela.php";
+		window.location = "times.php";
 	};
   function add(){
     var nome == document.getElementsByName('nome_jogador');

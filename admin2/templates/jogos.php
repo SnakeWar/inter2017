@@ -114,7 +114,7 @@ mysqli_query($link, $add) or die(mysqli_error($link));
 <script>
 /* Datepicker*/
 $(function() {
-$( "#calendario" ).datepicker();
+$( "#calendario" ).datepicker({ dateFormat: 'dd/mm/yy' });
 });
 /* FIM Datepicker*/
 function confirmacao(id) {

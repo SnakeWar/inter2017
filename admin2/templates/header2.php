@@ -8,7 +8,7 @@
     <title>Campeonato Altinão 2017</title>
 
     <!-- Bootstrap -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
     <!-- Meu Estilo -->
     <link href="../../css/style.css" rel="stylesheet">
     <!-- CSS para Datepicker -->

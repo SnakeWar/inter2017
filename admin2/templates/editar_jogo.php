@@ -6,11 +6,7 @@ header('location:../index.php');
   include('header2.php');
   include('../../templates/banco.php');
 $id_jogo = $_GET['id'];
-$resultado_query = "SELECT j.id AS id_jogo, tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa AS placar_casa, j.placar_visitante AS placar_visitante FROM jogo  j
-LEFT JOIN time tv ON tv.id = j.time_visitante
-LEFT JOIN time tc ON tc.id = j.time_casa WHERE j.id = $id_jogo";
-$jogos = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
-$jogo = mysqli_fetch_array($jogos);
+
 /*$id_time_casa = $jogo['time_casa'];*/
 unset($_GET['id']);
   //FORM
@@ -37,10 +33,17 @@ else
     {
       $query = "UPDATE jogo SET `data` = '$data', `placar_casa` = '$placar_casa', `placar_visitante` = '$placar_visitante', `time_casa` = '$time_casa', `time_visitante` = '$time_visitante' WHERE `id` = '$id_jogo'";
         mysqli_query($link, $query) or die(mysqli_error($link));
-        header('location: ../index.php');
+        /*header('location: .php');*/
     }
   }
 }
+
+$resultado_query = "SELECT j.id AS id_jogo, tc.nome AS time_casa, tv.nome AS time_visitante, j.data AS data, j.placar_casa AS placar_casa, j.placar_visitante AS placar_visitante FROM jogo  j
+LEFT JOIN time tv ON tv.id = j.time_visitante
+LEFT JOIN time tc ON tc.id = j.time_casa WHERE j.id = $id_jogo";
+$jogos = mysqli_query($link, $resultado_query) or die(mysqli_error($link));
+$jogo = mysqli_fetch_array($jogos);
+
 ?>
 <!-- Editar Jogo -->
 <div class="row times">
@@ -51,7 +54,7 @@ else
     <form>
       <div class="form-group">
         <label for="exampleInputName2">Data</label>
-        <input type="text" class="form-control" id="calendario" value="" name="data" placeholder="">
+        <input type="text" class="form-control" id="calendario" value="<?php echo $jogo['data']//date('d/m/Y', strtotime($jogo['data']))?>" name="data" placeholder="">
       </div>
       <br>
       <div class="form-group">
@@ -109,7 +112,7 @@ else
     window.location = "jogos.php";
   };
   $(function() {
-$( "#calendario" ).datepicker();
+$( "#calendario" ).datepicker({ dateFormat: 'dd/mm/yy' });
 });
 </script>
 <?php

@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Campeonato Altinão 2017</title>
         <!-- Bootstrap -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.css" rel="stylesheet">
         <!-- Meu Estilo -->
         <link href="../../css/style.css" rel="stylesheet">
         <!-- CSS para Datepicker -->
@@ -20,7 +20,7 @@
     <div class="page-header">
         <ul class="nav nav-pills gran-menu">
             <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
-            <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
+            <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="times.php">TIMES</a></li>
             <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
         </ul>
         <ul class="nav nav-pills min-menu">
@@ -31,7 +31,7 @@
                 <ul class="dropdown-menu dropdown-menu-large">
                     <ul class="nav nav-pills nav-stacked ">
                         <li role="presentation" class="<?php echo ($paginaAtiva=='jogos')?'active':''; ?>"><a href="jogos.php">JOGOS</a></li>
-                        <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="tabela.php">TIMES</a></li>
+                        <li role="presentation" class="<?php echo ($paginaAtiva=='times')?'active':''; ?>"><a href="times.php">TIMES</a></li>
                         <li role="presentation" class="<?php echo ($paginaAtiva=='admin')?'active':''; ?>"><a href="admin.php">ADMIN</a></li>
                     </ul>
                 </ul>
